@@ -19,6 +19,15 @@ def encode(rawPass):
         encPass += str(char)
     return encPass
 
+def decode(encPass):
+    rawPass = ""
+    for char in encPass:
+        char = int(char) - 3
+        if char < 0:
+            char += 10
+        rawPass += str(char)
+    return rawPass
+
 
 
 def main():
@@ -26,11 +35,11 @@ def main():
     comm = int(input("Please enter an option: "))
     while comm != 3:
         if comm == 1:
-            rawPass = input("Please enteryour password to encode: ")
+            rawPass = input("Please enter your password to encode: ")
             encPass = encode(rawPass)
             print("Your password has been encoded and stored!\n")
         if comm == 2:
-            print(f"The encoded password is {encPass}, and the original password is {rawPass}.\n")
+            print(f"The encoded password is {encPass}, and the original password is {decode(encPass)}.\n")
         print(menu)
         comm = int(input("Please enter an option: "))
 
